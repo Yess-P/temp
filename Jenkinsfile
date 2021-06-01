@@ -61,18 +61,10 @@ pipeline {
               success {
                   echo 'Successfully Cloned Repository'
 
-                  mail  to: 'parkes9509@gmail.com',
-                        subject: "Deploy Frontend Success",
-                        body: "Successfully deployed frontend!"
-
               }
 
               failure {
                   echo 'I failed :('
-
-                  mail  to: 'parkes9509@gmail.com',
-                        subject: "Failed Pipelinee",
-                        body: "Something is wrong with deploy frontend"
               }
           }
         }
@@ -146,14 +138,6 @@ pipeline {
             }
           }
 
-          post {
-            success {
-              mail  to: 'parkes9509@gmail.com',
-                    subject: "Deploy Success",
-                    body: "Successfully deployed!"
-                  
-            }
-          }
         }
     }
 }
