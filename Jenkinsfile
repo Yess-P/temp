@@ -44,30 +44,30 @@ pipeline {
         }
         
         // aws s3 에 파일을 올림
-        stage('Deploy Frontend') {
-          steps {
-            echo 'Deploying Frontend'
-            // 프론트엔드 디렉토리의 정적파일들을 S3 에 올림, 이 전에 반드시 EC2 instance profile 을 등록해야함.
-            dir ('./website'){
-                sh '''
-                aws s3 sync ./ s3://yesstest
-                '''
-            }
-          }
+//         stage('Deploy Frontend') {
+//           steps {
+//             echo 'Deploying Frontend'
+//             // 프론트엔드 디렉토리의 정적파일들을 S3 에 올림, 이 전에 반드시 EC2 instance profile 을 등록해야함.
+//             dir ('./website'){
+//                 sh '''
+//                 aws s3 sync ./ s3://yesstest
+//                 '''
+//             }
+//           }
 
-          post {
-              // If Maven was able to run the tests, even if some of the test
-              // failed, record the test results and archive the jar file.
-              success {
-                  echo 'Successfully Cloned Repository'
+//           post {
+//               // If Maven was able to run the tests, even if some of the test
+//               // failed, record the test results and archive the jar file.
+//               success {
+//                   echo 'Successfully Cloned Repository'
 
-              }
+//               }
 
-              failure {
-                  echo 'I failed :('
-              }
-          }
-        }
+//               failure {
+//                   echo 'I failed :('
+//               }
+//           }
+//         }
         
         stage('Lint Backend') {
             // Docker plugin and Docker Pipeline 두개를 깔아야 사용가능!
